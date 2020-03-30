@@ -19,6 +19,11 @@ public class HomeController {
 	
 	@RequestMapping("/helloJenkins")
 	public String Hello() {
-		return homeServiceImpl.HelloWorld();
+		return homeService.HelloWorld();
+	}
+	
+	@RequestMapping("/testJenkins")
+	public String Jenkin() {
+		return homeService.getJenkin();
 	}
 }

@@ -6,5 +6,7 @@ import org.springframework.stereotype.Component;
 public interface HomeService {
 	
 	public String HelloWorld();
+	
+	public String getJenkin();
 
 }

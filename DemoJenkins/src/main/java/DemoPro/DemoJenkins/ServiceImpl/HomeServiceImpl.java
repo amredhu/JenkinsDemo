@@ -10,5 +10,9 @@ public class HomeServiceImpl implements HomeService {
 	public String HelloWorld() {
 		return "Hello World!!";
 	}
+	
+	public String getJenkin() {
+		return "Hello Jenkins";
+	}
 
 }
