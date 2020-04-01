@@ -3,7 +3,7 @@ pipeline{
 		stages{
 			stage('BUILD'){
 				steps{
-						bat 'cd C:\Program Files (x86)\Jenkins\workspace\jenkins-pipeline-example\DemoJenkins'
+						bat 'DemoJenkins'
 						bat 'mvn clean install'
 				}
 			}
