@@ -1,23 +1,22 @@
 pipeline{
 	agent any
 		stages{
-			stage('BUILD'){
-				steps{
-					dir ('DemoJenkins'){
-						bat 'mvn clean install'
+			dir ('DemoJenkins'){
+				stage('BUILD'){
+					steps{
+							bat 'mvn clean install'
 					}
-						
 				}
-			}
-			stage('Testing Stage'){
-				steps{
-						
-						bat 'mvn test'
+				stage('Testing Stage'){
+					steps{
+							
+							bat 'mvn test'
+					}
 				}
-			}
-			stage('Deploy'){
-				steps{
-						bat 'mvn deploy'
+				stage('Deploy'){
+					steps{
+							bat 'mvn deploy'
+					}
 				}
 			}
 		}
