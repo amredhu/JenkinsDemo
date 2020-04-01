@@ -3,11 +3,13 @@ pipeline{
 		stages{
 			stage('BUILD'){
 				steps{
+						bat 'cd DemoJenkins'
 						bat 'mvn clean install'
 				}
 			}
 			stage('Testing Stage'){
 				steps{
+						
 						bat 'mvn test'
 				}
 			}
