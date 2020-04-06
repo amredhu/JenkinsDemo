@@ -1,3 +1,21 @@
+// Global Variables
+//Tomcat Library
+tomcat = new com.cb.web.Tomcat(hostname:"localhost", port:"8180", adminUser="Admin", adminPassword="admin")
+
+// Simple utility
+util=new com.cb.util.BasicUtilities()
+
+// Local Variables
+artifactName = "DemoJenkins-0.0.1-SNAPSHOT.war"
+artifact = "target/${artifactName}"
+
+// Closures to be executed by tomcat library
+deployClosure = {war, url, id -> bat "curl --upload-file ${war} '${url}?path=/${id}&update=true'"}
+undeployClosure = {url, id -> bat "curl '${url}?path=/${id}'"}
+deployClosure.resolveStrategy = Closure.DELEGATE_FIRST
+undeployClosure.resolveStrategy = Closure.DELEGATE_FIRST
+
+
 pipeline{
 	agent any
 		stages{
@@ -5,6 +23,7 @@ pipeline{
 				steps{
 					dir('DemoJenkins'){
 						bat 'mvn clean install'
+						archive artifact
 					}
 						
 				}
@@ -19,7 +38,10 @@ pipeline{
 			stage('Deploy'){
 				steps{
 					dir('DemoJenkins'){
-						bat 'mvn deploy'
+						//bat 'mvn deploy'
+						bat "curl -I ${tomcat.hostUrl}/demo/"
+						unarchive mapping: ['target/DemoJenkins-0.0.1-SNAPSHOT.war':'DemoJenkins-0.0.1-SNAPSHOT.war']
+						tomcat.deploy(artifactName, 'Deploy',deployClosure)
 					}
 				}
 			}
