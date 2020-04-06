@@ -1,4 +1,7 @@
 pipeline{
+
+	def tomcatweb = 'C:\Users\aredhu\Documents\apache-tomcat-9.0.26-windows-x64\apache-tomcat-9.0.26\webapps'
+	
 	agent any
 		stages{
 			stage('BUILD'){
@@ -16,6 +19,7 @@ pipeline{
 					}
 				}
 			}
+			/*
 			stage('SonarQube Analysis'){
 				steps{
 					dir('DemoJenkins'){
@@ -25,10 +29,11 @@ pipeline{
 					}
 				}
 			}
+			*/
 			stage('Deploy'){
 				steps{
 					dir('DemoJenkins'){
-						bat 'mvn deploy'
+						bat "copy target\\DemoJenkins*.war \"${tomcatweb}\\DemoJenkins.war"
 					}
 				}
 			}
