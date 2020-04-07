@@ -23,7 +23,7 @@
 		<repository>
 			<id>TomcatServer</id>
 			<name>TomcatServer</name>
-			<url>http://localhost:8180/demoData</url>
+			<url>http://localhost:8180/jeno</url>
 		</repository>
 		<!-- <snapshotRepository>
 			<id>snapshots</id>
