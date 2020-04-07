@@ -65,6 +65,7 @@
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat-maven-plugin</artifactId>
+				<version>9.0.26</version>
 			</plugin>
 		</plugins>
 	</build>
