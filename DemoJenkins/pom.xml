@@ -22,9 +22,14 @@
 	<distributionManagement>
 		<repository>
 			<id>TomcatServer</id>
-			<name>Deployment Repo</name>
-			<url>https://localhost:8180/demoData</url>
+			<name>TomcatServer</name>
+			<url>http://localhost:8180/demoData</url>
 		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>Snapshots</name>
+			<url>http://localhost:8180/demoData</url>
+		</snapshotRepository>
 	</distributionManagement>
 
 	<dependencies>
