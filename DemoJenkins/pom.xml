@@ -18,6 +18,14 @@
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
+	
+	<distributionManagement>
+		<repository>
+			<id>TomcatServer</id>
+			<name>Deployment Repo</name>
+			<url>https://localhost:8180/demoData</url>
+		</repository>
+	</distributionManagement>
 
 	<dependencies>
 		<dependency>
