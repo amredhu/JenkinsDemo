@@ -25,11 +25,11 @@
 			<name>TomcatServer</name>
 			<url>http://localhost:8180/demoData</url>
 		</repository>
-		<snapshotRepository>
+		<!-- <snapshotRepository>
 			<id>snapshots</id>
 			<name>Snapshots</name>
 			<url>http://localhost:8180/demoData</url>
-		</snapshotRepository>
+		</snapshotRepository> -->
 	</distributionManagement>
 
 	<dependencies>
