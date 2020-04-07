@@ -23,7 +23,7 @@
 		<repository>
 			<id>TomcatServer</id>
 			<name>TomcatServer</name>
-			<url>http://localhost:8280/jeno</url>
+			<url>http://localhost:8180/jeno</url>
 		</repository>
 		<!-- <snapshotRepository>
 			<id>snapshots</id>
@@ -61,6 +61,10 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
