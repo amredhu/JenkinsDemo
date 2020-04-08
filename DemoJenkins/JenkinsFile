@@ -6,14 +6,23 @@ pipeline{
 				steps{
 					dir('DemoJenkins'){
 						bat 'mvn clean install'
+					}	
+				}
+				post {
+					failure {
+						script { env.FAILURE_STAGE = 'Build' }
 					}
-						
 				}
 			}
 			stage('Testing Stage'){
 				steps{
 					dir('DemoJenkins'){
 						bat 'mvn test'
+					}
+				}
+				post {
+					failure {
+						script { env.FAILURE_STAGE = 'Testing' }
 					}
 				}
 			}
@@ -33,9 +42,23 @@ pipeline{
 					dir('DemoJenkins'){
 						bat "echo Deployment began"
 						//bat "copy DemoJenkins\\target\\DemoJenkins*.war \"C:\\Users\\aredhu\\Documents\\apache-tomcat-9.0.26-windows-x64\\apache-tomcat-9.0.26\\webapps\\DemoJenkinsSnap.war\""
-						bat 'mvn deploy'
+						//bat 'mvn deploy'
+						deploy adapters: [tomcat9(credentialsId: '2394e4b5-174f-4544-9eda-f6638e57ebe5', path: '', url: 'http://localhost:8180/')], contextPath: 'demoData', war: '**/*.war'
 					}
 				}
+				post {
+					failure {
+						script { env.FAILURE_STAGE = 'Deployment' }
+					}
+				}
+			}
+		}
+		post {
+			success {
+				emailText body: 'Build Success', subject: 'Jenkins Job Report', to: 'aredhu@dxc.com'
+			}
+			failure {
+				emailText body: 'Build Failure', subject: 'Jenkins Job Report', to: 'aredhu@dxc.com'
 			}
 		}
 	
