@@ -55,10 +55,10 @@ pipeline{
 		}
 		post {
 			success {
-				emailText body: 'Build Success', subject: 'Jenkins Job Report', to: 'aredhu@dxc.com'
+				emailext body: 'Build Success', subject: 'Jenkins Job Report', to: 'aredhu@dxc.com'
 			}
 			failure {
-				emailText body: 'Build Failure', subject: 'Jenkins Job Report', to: 'aredhu@dxc.com'
+				emailext body: 'Build Failure', subject: 'Jenkins Job Report', to: 'aredhu@dxc.com'
 			}
 		}
 	
